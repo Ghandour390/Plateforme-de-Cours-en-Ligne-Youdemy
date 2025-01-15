@@ -7,7 +7,7 @@ abstract class Utilisateur{
     private string $firstename;
     private string $email ;
     private string $password ;
-    // private bool $role jhjjj;
+    // private bool $role jhjjjjj;
 
     public function __construct($lastename ,$firstename ,$email , $password ){
         $this->lastename = $lastename;
