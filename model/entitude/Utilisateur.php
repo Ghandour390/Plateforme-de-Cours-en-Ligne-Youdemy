@@ -2,20 +2,21 @@
 
 
 abstract class Utilisateur{
-    private $id;
-    private string $lastename;
-    private string $firstename;
-    private string $email ;
-    private string $password ;
-    // private bool $role jhjjjjj;
+    protected $id;
+    protected string $lastename;
+    protected string $firstename;
+    protected string $email ;
+    protected string $password ;
+  
 
-    public function __construct($lastename ,$firstename ,$email , $password ){
+    public function __construct($lastename ,$firstename ,$email , $password ,$id=0){
         $this->lastename = $lastename;
         $this->firstename = $firstename;
         $this->email = $email ;
         $this->password = $password;
-        $this->id = -1 ;
+        $this->id = $id ;
     }
+   
     public function singup($lastename,$firstename,$email,$password){}
     public function getLasteName(){$this->lastename  ;}
     public function getFirsteName(){$this->firstename ;}

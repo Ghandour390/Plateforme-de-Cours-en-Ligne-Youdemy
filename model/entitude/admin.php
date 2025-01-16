@@ -9,7 +9,9 @@ class Admin extends Utilisateur{
     }
     public function insertTag()  {}
     public function gestionContonu(){}
-    public function gestionUtilisateur(){}
+    public function gestionUtilisateur(){
+        
+    }
     public function validationCompte(){}
         
     }

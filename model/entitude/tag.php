@@ -8,6 +8,13 @@ class Tag{
         $this->tag = $tag;
         $this-> id_tag ;
     }
+
+    public function save() {
+        $conn = connexion::connect();
+        $sql = "INSERT INTO tag (tag) VALUES (?)";
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute([$this->tag]);
+    }
     public function getTag(){return $this->tag;}
     public function getIdTag(){ return $this->id_tag ;}
 
