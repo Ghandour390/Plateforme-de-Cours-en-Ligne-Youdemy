@@ -3,7 +3,7 @@ class Connexion {
     private static $servername = "localhost";
     private static $username = "root";
     private static $password = "";
-    private static $dbname = "cours";
+    private static $dbname = "elearning_platform";
     protected static $connexion;
 
     public static function connect() {

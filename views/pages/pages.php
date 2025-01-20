@@ -7,11 +7,11 @@
 
     <link navbar-navrel="canonical" href="https://getbootstrap.com/docs/3.3/examples/starter-template/">
     
-    <title>Admin Area | Dashboard</title>
+    <title>Admin Area | Pages</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="views/pages/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="views/pages/css/style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
   </head>
@@ -31,14 +31,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Dashboard</a></li>
-            <li><a href="views/pages/pages.php">Pages</a></li>
-            <li><a href="views/pages/posts.php">Posts</a></li>
-            <li><a href="views/pages/users.php">Users</a></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active"><a href="pages.html">Pages</a></li>
+            <li><a href="posts.html">Posts</a></li>
+            <li><a href="users.html">Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="views/pages/register.php">signUp</a></li>
-            <li><a href="views/pages/login.php">Logout</a></li>
+            <li><a href="#">Welcome, Ilya</a></li>
+            <li><a href="login.html">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> PLATFORME <small>Cours en ligne</small></h1>
+                    <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages <small>Manage your site pages</small></h1>
                 </div>
                 <div class="col-md-2">
                     <div class="dropdown create">
@@ -70,7 +70,8 @@
     <section id="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
+                <li><a href="index.html">Dashboard</a></li>
+                <li class="active">Pages</li>
 
             </ol>
         </div>
@@ -107,71 +108,51 @@
                     <!-- Website Overview -->
                     <div class="panel panel-default">
                         <div class="panel-heading main-color-bg">
-                          <h3 class="panel-title">Website Overview</h3>
+                          <h3 class="panel-title">Pages</h3>
                         </div>
                         <div class="panel-body">
-                          <div class="col-md-3">
-                              <div class="well dash-box">
-                                  <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 421</h2>
-                                  <h4>Users</h4> 
-                              </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="well dash-box">
-                                  <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
-                                  <h4>Pages</h4>
-                              </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="well dash-box">
-                                  <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>33</h2>
-                                  <h4>Posts</h4>
-                              </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="well dash-box">
-                                  <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 18,209</h2>
-                                  <h4>Visitors</h4>
-                              </div>
-                          </div>
+                           <div class="row">
+                               <div class="col-md-12">
+                                   <input class="form-control" type="text" placeholder="Filter Pages">
+                               </div>
+                           </div>
+                           <br>
+                           <table class="table table-striped table-hover">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Published</th>
+                                    <th>Created</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th>Home</th>
+                                    <th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
+                                    <th>Dec 13, 2020</th>
+                                    <th><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger">Delete</a></th>
+                                </tr>
+                                <tr>
+                                    <th>About</th>
+                                    <th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
+                                    <th>Feb 07, 2021</th>
+                                    <th><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger">Delete</a></th>
+                                </tr>
+                                <tr>
+                                    <th>Services</th>
+                                    <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+                                    <th>Jan 17, 2021</th>
+                                    <th><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger">Delete</a></th>
+                                </tr>
+                                <tr>
+                                    <th>Constact</th>
+                                    <th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
+                                    <th>Apr 10, 2021</th>
+                                    <th><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger">Delete</a></th>
+                                </tr>
+                           </table>
                         </div>
                       </div>
 
-                      <!-- Latest Users -->
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">Latest Users</h3>
-                        </div>
-                        <div class="panel-body">
-                          <table class="table table-striped table-hover">
-                              <tr>
-                                  <th>Name</th>
-                                  <th>Email</th>
-                                  <th>Joined</th>
-                              </tr>
-                              <tr>
-                                  <td>Nick Lotman</td>
-                                  <td>lottery1212@gmail.com</td>
-                                  <td>April 09, 2021</td>
-                              </tr>
-                              <tr>
-                                  <td>Trevor White</td>
-                                  <td>whiteboy@gmail.com</td>
-                                  <td>Nov 13, 2020</td>
-                              </tr>
-                              <tr>
-                                  <td>Marry S.</td>
-                                  <td>incognitogirl22@gmail.com</td>
-                                  <td>Feb 02, 2021</td>
-                              </tr>
-                              <tr>
-                                  <td>Hannah Longman</td>
-                                  <td>hannah.tim.log@gmail.com</td>
-                                  <td>Jan 22, 2021</td>
-                              </tr>
-                          </table>
-                        </div>
-                      </div>
+
                 </div>
             </div>
         </div>
