@@ -12,7 +12,11 @@ class Admin extends Utilisateur{
     public function gestionUtilisateur(){
         
     }
-    public function validationCompte(){
+    public function validationCompte($statuts){
+        $conn=Connexion::connect();
+        $sql="UPDATE `utilisateurs` SET `status`=?";
+        $stmt=$conn->prepare($sql);
+        return $stmt->execute([$statuts]);
 
       
     }

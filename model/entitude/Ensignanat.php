@@ -36,7 +36,7 @@
   public static function getAll() {
     $conn = Connexion::connect();
     $sql = "SELECT * FROM utilisateurs";
-    return $conn->query($sql)->fetchAll(PDO::FETCH_CLASS);
+    return $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 } 
 
 public static function getById($id) {
@@ -44,7 +44,7 @@ public static function getById($id) {
   $sql = "SELECT * FROM utilisateurs WHERE id = ?";
   $stmt = $conn->prepare($sql);
   $stmt->execute([$id]);
-  return $stmt->fetch(PDO::FETCH_CLASS);
+  return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 public static function search($term) {
   $conn = Connexion::connect();
@@ -52,7 +52,7 @@ public static function search($term) {
   $stmt = $conn->prepare($sql);
   $term = "$term%";
   $stmt->execute([$term, $term, $term, $term]);
-  return $stmt->fetchAll(PDO::FETCH_CLASS);
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
@@ -73,6 +73,13 @@ public static function search($term) {
       return $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
     }
+    private function getStudentsForCourse($coursId) {
+      $conn=Connexion::connect();
+      $query = "SELECT* FROM utilisateurs  
+              JOIN cours  ON utilisateurs.id = cours.id 
+              WHERE cours.id = ?";
+       return $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);       
+              }
     public function gestionCour(){}
     public function Voirstatistique(){}
     

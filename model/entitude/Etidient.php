@@ -9,8 +9,17 @@ class Etidient extends Utilisateur{
     public function __construct(){}
 
 
-    public function VisiteCours(){}
-    public function accesCour(){}
+    public function VisiteCours(){
+        $conn=Connexion::connect();
+        $query="SELECT * FROM `cours`";
+        return $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function accesCour(){
+        $conn=Connexion::connect();
+        $query="SELECT * FROM utilisateurs INNER JOIN cours ON cours.user_id=utilisateurs.id WHERE utilisateurs.role_id=3;";
+        return $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+  
+    }
     public function recherche(){}
     public function sincrirecour(){
         $query="INSERT INTO `inscription`(`etudiant_id`, `cours_id`) VALUES ('?','?')";
