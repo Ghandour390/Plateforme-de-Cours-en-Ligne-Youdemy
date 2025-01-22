@@ -8,13 +8,13 @@
   class Ensignanat extends Utilisateur{
    
     private cours $cours ;
-    private string $spicialite;
+  
 
 
     
 
-    public function __construct($lastename,$firstename,$email,$password,$PHONE,$id_role,$id){    
-        parent::__construct($lastename,$firstename,$email,$password ,$PHONE,$id_role,$id);
+    public function __construct($lastename,$firstename,$email,$password,$PHONE,$id_role,$id = null,$statuts = "pending"){    
+        parent::__construct($lastename,$firstename,$email,$password ,$PHONE,$id_role,$id,$statuts = "pending");
     }
 
     // crud
@@ -28,10 +28,10 @@
 
     public function createCompte() {
      
-      $query = 'INSERT INTO `utilisateurs`(`id`, `firstname`, `lastname`, `email`, `password`, `role_id`, `phone`, `status`) VALUES (?,?,?,?,?,?,?,?)';
+      $query = 'INSERT INTO `utilisateurs`(`firstname`, `lastname`, `email`, `password`, `role_id`, `phone`, `status`) VALUES (?,?,?,?,?,?,?)';
       $conn = connexion::connect();
       $stmt = $conn->prepare($query);
-      return $stmt -> execute([$this->id,$this->firstename,  $this->lastename, $this->email,$this->password,$this->id_role,$this->PHONE,$this->statuts]);
+      return $stmt -> execute([$this->firstename,  $this->lastename, $this->email,$this->password,$this->id_role,$this->PHONE,$this->statuts]);
   }
   public static function getAll() {
     $conn = Connexion::connect();
@@ -63,8 +63,15 @@ public static function search($term) {
       // $catigorie1->saveCategorie()
        
        
-        $cour = new Cours( $id_tag,$id_catigorie,$description,);
+        $cour = new Cours( );
         $cour ->save();
+    }
+    public function getetudent(){
+      $conn=Connexion::connect();
+      $query="SELECT *FROM utilisateurs INNER JOIN cours ON utilisateurs.id=cours.user_id
+              WHERE utilisateurs.role_id=1";
+      return $conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+
     }
     public function gestionCour(){}
     public function Voirstatistique(){}

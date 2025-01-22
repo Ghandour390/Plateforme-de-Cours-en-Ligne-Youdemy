@@ -5,15 +5,37 @@
 
     class Cours{
         private int $id_cour;
+        private string $titre;
         private int $id_tag;
         private int $id_catigorie;
+        private int $id_ensignant;
         private string $description;
 
-    public function __construct(int $id_tag,int $id_catigorie , string $description){
-        $this->id_tag = $id_tag;
-        $this->id_catigorie = $id_catigorie;
-        $this->description = $description ;
-    }
+        public function __call($name, $arguments) {
+            if($name == "CoursBuilder"){
+                if(count($arguments) == 2){
+                    $this->titre = $arguments[0];
+                    $this->description = $arguments[1];
+                } 
+                if(count($arguments) == 3){
+                    $this->id_cour = $arguments[0];
+                    $this->titre = $arguments[1];
+                    $this->description = $arguments[2];
+                } 
+                if(count($arguments) == 5){
+                    $this->id_cour = $arguments[0];
+                    $this->titre = $arguments[1];
+                    $this->description = $arguments[2];
+                  
+                    // $this->etudiants = $arguments[4];   
+                    $this->id_ensignant = $arguments[3];   
+    
+                    $this->id_tag = $arguments[4];   
+                    
+                } 
+            }
+        }
+    
     public function save() {
         $conn = connexion::connect();
         $sql = "INSERT INTO cours (id_tage , id_catigorie , description ) VALUES (? ,? ,?)";
@@ -56,6 +78,23 @@
         $stmt->execute([$term, $term, $term]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getcousensignant($id){
+        $conn = Connexion::connect();
+        $sql = "SELECT * FROM utilisateurs WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getcourscatigorie($categorieName){
+        $conn = Connexion::connect();
+        $sql = "SELECT * FROM cours INNER JOIN categories ON cours.categorie_id=cours.id
+                                    WHERE categories.name= ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$categorieName]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
     public function getTagId(){return $this->id_tag;}
     public function getCatigorie(){return $this->id_catigorie;}
     public function getdescription(){return $this->description;}
@@ -63,4 +102,4 @@
     public function setTagId($id_tage){ $this->id_tag = $id_tage;}
     public function setCatigorieId($id_catigorie){ $this->id_catigorie = $id_catigorie ;}
     public function setdescription($description){$this->description = $description;}
-    }
+}

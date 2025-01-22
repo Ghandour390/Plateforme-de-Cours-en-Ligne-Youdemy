@@ -45,26 +45,25 @@ require PROJECT_ROOT.'\model\entitude\Ensignanat.php';
 <?php
 
 
-
 if (isset($_POST['submit'])) {
     $lastname = ($_POST['nom']);
-    $firstname = ($_POST['prenom']);
-    $email = ($_POST['email']);
-    $password = ($_POST['password']);
-    $role = ($_POST['role']);
+    $firstname = $_POST['prenom'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
     $PHONE = $_POST['PHONE'];
-
+    {
     if($role == "ADMIN"){
         $id_role = 1;
     }elseif ($role == "Etudiant") {
         $id_role = 2;
     } else {
-        $id_role=3;
+        $id_role= 3;
     }
-}
+}}
 
     if (!empty($lastname) && !empty($firstname) && !empty($email) && !empty($password) ) {
-        $user = new Ensignanat($lastname,$firstname,$email,$password,$PHONE,$role,$id);
+        $user = new Ensignanat($lastname,$firstname,$email,$password,$PHONE,$id_role,$id);
         $user->createCompte();
         header('location:login.php');
     } else {

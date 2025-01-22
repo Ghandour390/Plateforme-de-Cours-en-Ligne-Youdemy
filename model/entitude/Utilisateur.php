@@ -9,12 +9,12 @@ abstract class Utilisateur{
     protected string $password ;
     protected int $id_role;
     protected string $PHONE;
-    protected $statuts = "pending";
+    protected string $statuts;
    
     // protected Role $role;
   
 
-    public function __construct($lastename ,$firstename ,$email , $password ,$PHONE,$id_role,$id=null,$statuts){
+    public function __construct($lastename ,$firstename ,$email , $password ,$PHONE,$id_role,$id=null,$statuts = "pending"){
         $this->lastename = $lastename;
         $this->firstename = $firstename;
         $this->email = $email ;
